@@ -134,7 +134,7 @@ def try_major_login(open_id: str, access_token: str, platform_type: int):
         "Content-Type": "application/x-www-form-urlencoded",
         "X-Unity-Version": "2018.4.11f1",
         "X-GA": "v1 1",
-        "ReleaseVersion": "OB54"
+        "ReleaseVersion": "OB55"
     }
     try:
         resp = requests.post(url, data=encrypted_payload, headers=headers, verify=False, timeout=10)
