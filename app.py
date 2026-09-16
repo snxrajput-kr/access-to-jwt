@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # DON'T EDIT
-#MADE BY STAR
+# MADE BY STAR
 """
 Free Fire Token Extractor API (self‑contained)
 Usage: http://localhost:8000/token?access_token=YOUR_ACCESS_TOKEN
@@ -13,10 +13,10 @@ import sys
 from flask import Flask, request, jsonify
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # -------------------- Include protobuf generated code --------------------
-# All protobuf classes are defined here (from MajoRLoGinrEq_pb2.py and MajoRLoGinrEs_pb2.py)
-
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import symbol_database as _symbol_database
@@ -24,7 +24,7 @@ from google.protobuf.internal import builder as _builder
 
 _sym_db = _symbol_database.Default()
 
-# --- MajorLoginReq protobuf RIZER ---
+# --- MajorLoginReq protobuf ---
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13MajorLoginReq.proto\"\xfa\n\n\nMajorLogin\x12\x12\n\nevent_time\x18\x03 \x01(\t\x12\x11\n\tgame_name\x18\x04 \x01(\t\x12\x13\n\x0bplatform_id\x18\x05 \x01(\x05\x12\x16\n\x0e\x63lient_version\x18\x07 \x01(\t\x12\x17\n\x0fsystem_software\x18\x08 \x01(\t\x12\x17\n\x0fsystem_hardware\x18\t \x01(\t\x12\x18\n\x10telecom_operator\x18\n \x01(\t\x12\x14\n\x0cnetwork_type\x18\x0b \x01(\t\x12\x14\n\x0cscreen_width\x18\x0c \x01(\r\x12\x15\n\rscreen_height\x18\r \x01(\r\x12\x12\n\nscreen_dpi\x18\x0e \x01(\t\x12\x19\n\x11processor_details\x18\x0f \x01(\t\x12\x0e\n\x06memory\x18\x10 \x01(\r\x12\x14\n\x0cgpu_renderer\x18\x11 \x01(\t\x12\x13\n\x0bgpu_version\x18\x12 \x01(\t\x12\x18\n\x10unique_device_id\x18\x13 \x01(\t\x12\x11\n\tclient_ip\x18\x14 \x01(\t\x12\x10\n\x08language\x18\x15 \x01(\t\x12\x0f\n\x07open_id\x18\x16 \x01(\t\x12\x14\n\x0copen_id_type\x18\x17 \x01(\t\x12\x13\n\x0b\x64\x65vice_type\x18\x18 \x01(\t\x12\'\n\x10memory_available\x18\x19 \x01(\x0b\x32\r.GameSecurity\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x1d \x01(\t\x12\x17\n\x0fplatform_sdk_id\x18\x1e \x01(\x05\x12\x1a\n\x12network_operator_a\x18) \x01(\t\x12\x16\n\x0enetwork_type_a\x18* \x01(\t\x12\x1c\n\x14\x63lient_using_version\x18\x39 \x01(\t\x12\x1e\n\x16\x65xternal_storage_total\x18< \x01(\x05\x12\"\n\x1a\x65xternal_storage_available\x18= \x01(\x05\x12\x1e\n\x16internal_storage_total\x18> \x01(\x05\x12\"\n\x1ainternal_storage_available\x18? \x01(\x05\x12#\n\x1bgame_disk_storage_available\x18@ \x01(\x05\x12\x1f\n\x17game_disk_storage_total\x18\x41 \x01(\x05\x12%\n\x1d\x65xternal_sdcard_avail_storage\x18\x42 \x01(\x05\x12%\n\x1d\x65xternal_sdcard_total_storage\x18\x43 \x01(\x05\x12\x10\n\x08login_by\x18I \x01(\x05\x12\x14\n\x0clibrary_path\x18J \x01(\t\x12\x12\n\nreg_avatar\x18L \x01(\x05\x12\x15\n\rlibrary_token\x18M \x01(\t\x12\x14\n\x0c\x63hannel_type\x18N \x01(\x05\x12\x10\n\x08\x63pu_type\x18O \x01(\x05\x12\x18\n\x10\x63pu_architecture\x18Q \x01(\t\x12\x1b\n\x13\x63lient_version_code\x18S \x01(\t\x12\x14\n\x0cgraphics_api\x18V \x01(\t\x12\x1d\n\x15supported_astc_bitset\x18W \x01(\r\x12\x1a\n\x12login_open_id_type\x18X \x01(\x05\x12\x18\n\x10\x61nalytics_detail\x18Y \x01(\x0c\x12\x14\n\x0cloading_time\x18\\ \x01(\r\x12\x17\n\x0frelease_channel\x18] \x01(\t\x12\x12\n\nextra_info\x18^ \x01(\t\x12 \n\x18\x61ndroid_engine_init_flag\x18_ \x01(\r\x12\x0f\n\x07if_push\x18\x61 \x01(\x05\x12\x0e\n\x06is_vpn\x18\x62 \x01(\x05\x12\x1c\n\x14origin_platform_type\x18\x63 \x01(\t\x12\x1d\n\x15primary_platform_type\x18\x64 \x01(\t\"5\n\x0cGameSecurity\x12\x0f\n\x07version\x18\x06 \x01(\x05\x12\x14\n\x0chidden_value\x18\x08 \x01(\x04\x62\x06proto3')
 
 _globals = globals()
@@ -39,7 +39,7 @@ if not _descriptor._USE_C_DESCRIPTORS:
 MajorLogin = _globals['MajorLogin']
 GameSecurity = _globals['GameSecurity']
 
-# --- MajorLoginRes protobuf (MajoRLoGinrEs_pb2) ---
+# --- MajorLoginRes protobuf ---
 DESCRIPTOR2 = _descriptor_pool.Default().AddSerializedFile(b'\n\x13MajorLoginRes.proto\"|\n\rMajorLoginRes\x12\x13\n\x0b\x61\x63\x63ount_uid\x18\x01 \x01(\x04\x12\x0e\n\x06region\x18\x02 \x01(\t\x12\r\n\x05token\x18\x08 \x01(\t\x12\x0b\n\x03url\x18\n \x01(\t\x12\x11\n\ttimestamp\x18\x15 \x01(\x03\x12\x0b\n\x03key\x18\x16 \x01(\x0c\x12\n\n\x02iv\x18\x17 \x01(\x0c\x62\x06proto3')
 _globals2 = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR2, _globals2)
@@ -54,7 +54,7 @@ MajorLoginRes = _globals2['MajorLoginRes']
 
 app = Flask(__name__)
 
-# AES constants (from xC4.py)
+# AES constants
 AES_KEY = bytes([89, 103, 38, 116, 99, 37, 68, 69, 117, 104, 54, 37, 90, 99, 94, 56])
 AES_IV = bytes([54, 111, 121, 90, 68, 114, 50, 50, 69, 51, 121, 99, 104, 106, 77, 37])
 
@@ -67,7 +67,8 @@ def build_major_login(open_id: str, access_token: str, platform_type: int) -> by
     major.event_time = "2026-06-24 12:00:00"
     major.game_name = "free fire"
     major.platform_id = 1
-    major.client_version = "1.126.2"
+    # ✅ UPDATED client_version
+    major.client_version = "1.132.3"
     major.system_software = "Android OS 9 / API-28 (PQ3B.190801.10101846/G9650ZHU2ARC6)"
     major.system_hardware = "Handheld"
     major.telecom_operator = "Verizon"
@@ -121,12 +122,13 @@ def build_major_login(open_id: str, access_token: str, platform_type: int) -> by
     major.origin_platform_type = str(platform_type)
     major.primary_platform_type = str(platform_type)
     return major.SerializeToString()
-#AUTO DETECTION BY RIZER
+
 def try_major_login(open_id: str, access_token: str, platform_type: int):
     payload = build_major_login(open_id, access_token, platform_type)
     encrypted_payload = encrypt_aes(payload)
 
-    url = "https://loginbp.ggblueshark.com/MajorLogin"
+    # ✅ UPDATED LOGIN URL
+    url = "https://loginbp.ppmainecoonghj.com/MajorLogin"
     headers = {
         "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 11; ASUS_Z01QD Build/PI)",
         "Connection": "Keep-Alive",
@@ -139,6 +141,7 @@ def try_major_login(open_id: str, access_token: str, platform_type: int):
     try:
         resp = requests.post(url, data=encrypted_payload, headers=headers, verify=False, timeout=10)
         if resp.status_code != 200:
+            print(f"MajorLogin HTTP {resp.status_code} for platform {platform_type}")
             return None
         major_res = MajorLoginRes()
         major_res.ParseFromString(resp.content)
@@ -206,7 +209,6 @@ def rizer_endpoint():
             })
         else:
             last_error = f"Failed with platform_type {pt}"
-    # If we get here, all attempts failed
     return jsonify({
         "success": False,
         "error": "MajorLogin failed. Account may be banned, not registered, or token invalid.",
